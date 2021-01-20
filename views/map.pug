@@ -14,15 +14,6 @@ html
 
         script.
             var bdata = !{JSON.stringify(bayoudata)};
-            var co2_vs_time = [];
-            for(var i = 0; i < bdata.length; i++) {
-            var thisco2 = bdata[i].co2;
-            var timeutc = bdata[i].created;
-            var localtime = luxon.DateTime.fromISO(timeutc).toLocal().toString();
-            co2_vs_time.push({"t":localtime,"y":thisco2})
-            }
-            console.log(co2_vs_time);
-
             var ctx = document.getElementById('myChart').getContext('2d');
-            makeChart(ctx,co2_vs_time);
+            makeChart(ctx,bdata);
             
