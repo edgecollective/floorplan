@@ -6,8 +6,9 @@ function letMeCallYou()
     alert("Bazinga!!!  you called letMeCallYou")
 }
 
-function makeChart(ctx,bdata,param_key)
+function makeChart(docid,bdata,param_key)
 {
+    var ctx = document.getElementById(docid).getContext('2d');
     var param_vs_time = [];
             for(var i = 0; i < bdata.length; i++) {
             var thisco2 = bdata[i][param_key];

@@ -15,9 +15,5 @@ html
 
         script.
             var bdata = !{JSON.stringify(bayoudata)};
-            //co2
-            var ctx = document.getElementById('co2').getContext('2d');
-            makeChart(ctx,bdata,"co2");
-            //temp
-            var ctx = document.getElementById('temp').getContext('2d');
-            makeChart(ctx,bdata,"tempc");
+            makeChart("co2",bdata,"co2");
+            makeChart("temp",bdata,"tempc");
