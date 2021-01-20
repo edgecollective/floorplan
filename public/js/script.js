@@ -6,24 +6,24 @@ function letMeCallYou()
     alert("Bazinga!!!  you called letMeCallYou")
 }
 
-function makeChart(ctx,bdata)
+function makeChart(ctx,bdata,param_key)
 {
-    var co2_vs_time = [];
+    var param_vs_time = [];
             for(var i = 0; i < bdata.length; i++) {
-            var thisco2 = bdata[i].co2;
+            var thisco2 = bdata[i][param_key];
             var timeutc = bdata[i].created;
             var localtime = luxon.DateTime.fromISO(timeutc).toLocal().toString();
-            co2_vs_time.push({"t":localtime,"y":thisco2})
+            param_vs_time.push({"t":localtime,"y":thisco2})
             }
     
     var chart = new Chart(ctx, {
         type: 'line',
         data: {
         datasets: [{
-        label: 'CO2 (PPM)',
+        label: param_key,
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
-        data: co2_vs_time
+        data: param_vs_time
         }]
         },
         // Configuration options go here

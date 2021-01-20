@@ -10,10 +10,14 @@ html
 
         script(src='/js/script.js')
 
-    canvas#myChart
+    canvas#co2
+    canvas#temp
 
         script.
             var bdata = !{JSON.stringify(bayoudata)};
-            var ctx = document.getElementById('myChart').getContext('2d');
-            makeChart(ctx,bdata);
-            
+            //co2
+            var ctx = document.getElementById('co2').getContext('2d');
+            makeChart(ctx,bdata,"co2");
+            //temp
+            var ctx = document.getElementById('temp').getContext('2d');
+            makeChart(ctx,bdata,"tempc");
