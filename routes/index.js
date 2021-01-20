@@ -1,16 +1,19 @@
 var express = require('express');
 var router = express.Router();
 var path = require("path");
-
-/*
-router.get('/', function(req, res, next) {
-  res.send('Welcome to Habitat');
-});
-*/
+const fetch   = require('node-fetch');
 
 router.get('/', function(req,res, next){
-  //res.sendFile(path.join(__dirname,'../public/form.html')); //make this more robust?
-  res.render('landing');
+    var url = 'http://data.pvos.org/co2/data/3897755c6379d00bbb1d622827b1ffd1ba6a0579802044c9/json';
+    fetch(url)
+        .then(res => res.json())
+        .then(data => {
+            res.render('map', {bayoudata:data});
+
+        })
+        .catch(err => {
+            res.send(err);
+        });
 });
 
 module.exports = router;

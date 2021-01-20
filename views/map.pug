@@ -1,0 +1,51 @@
+doctype html
+html
+    head
+        script(src='https://cdn.jsdelivr.net/npm/luxon@1.25.0/build/global/luxon.min.js')
+        script(src='https://cdn.jsdelivr.net/npm/chart.js@2.9.3')
+        //script(src='https://cdn.jsdelivr.net/npm/luxon@1.22.1')
+        script(src='https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@0.2.1')
+
+    body
+
+    canvas#myChart
+
+        script.
+            var bdata = !{JSON.stringify(bayoudata)};
+            var co2_vs_time = [];
+            for(var i = 0; i < bdata.length; i++) {
+            var thisco2 = bdata[i].co2;
+            var timeutc = bdata[i].created;
+            var localtime = luxon.DateTime.fromISO(timeutc).toLocal().toString();
+            co2_vs_time.push({"t":localtime,"y":thisco2})
+            }
+            console.log(co2_vs_time);
+            var ctx = document.getElementById('myChart').getContext('2d');
+            var chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+            datasets: [{
+            label: 'CO2 (PPM)',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: co2_vs_time
+            }]
+            },
+            // Configuration options go here
+            options: {
+            scales: {
+            xAxes: [{
+            type: 'time',
+            distribution: 'linear',
+            ticks: {
+            major: {
+            enabled: true, // <-- This is the key line
+            fontStyle: 'bold', //You can also style these values differently
+            fontSize: 14, //You can also style these values differently
+            },
+            },
+            }],
+            },
+            zone: "America/NewYork"
+            }
+            });
