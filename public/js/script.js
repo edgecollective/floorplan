@@ -8,6 +8,8 @@ function letMeCallYou()
 
 function makeChart(docid,bdata,param_key)
 {
+    //console.log(param_key);
+
     var ctx = document.getElementById(docid).getContext('2d');
     var param_vs_time = [];
             for(var i = 0; i < bdata.length; i++) {

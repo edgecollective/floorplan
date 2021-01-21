@@ -10,10 +10,15 @@ html
 
         script(src='/js/script.js')
 
-    canvas#co2
-    canvas#temp
+    p a
+
+    canvas#chart1
 
         script.
             var bdata = !{JSON.stringify(bayoudata)};
-            makeChart("co2",bdata,"co2");
-            makeChart("temp",bdata,"tempc");
+            var mykey = !{JSON.stringify(graphkey)};
+            console.log(mykey);
+            //console.log(!{graphkey})
+            //var graphingkey = String(#graphkey});
+            makeChart("chart1",bdata,mykey);
+            //makeChart("temp",bdata,"tempc");
