@@ -1,0 +1,39 @@
+doctype html
+doctype html
+html
+    head
+        meta(charset='UTF-8')
+        title Mapgraph
+        link(rel='stylesheet', href='/style.css')
+        script(src='https://cdn.jsdelivr.net/npm/luxon@1.25.0/build/global/luxon.min.js')
+        script(src='https://cdn.jsdelivr.net/npm/chart.js@2.9.3')
+        //script(src='https://cdn.jsdelivr.net/npm/luxon@1.22.1')
+        script(src='https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@0.2.1')
+
+    body
+
+    
+
+    div.flex-container 
+        div.flex-child 
+            canvas#chart1
+        div.flex-child 
+            img(src=imageurl)
+    
+    div.flex-container 
+        div.flex-child 
+            canvas#chart2
+        div.flex-child 
+            li.boxsmaller width: #{width}
+            li.boxsmaller height: #{height}
+
+    script(src='/js/script.js')
+
+    script.
+        var bdata = !{JSON.stringify(bayoudata)};
+        var mykey = !{JSON.stringify(graphkey)};
+        console.log(mykey);
+        //console.log(!{graphkey})
+        //var graphingkey = String(#graphkey});
+        makeChart("chart1",bdata,"co2");
+        makeChart("chart2",bdata,"tempc");

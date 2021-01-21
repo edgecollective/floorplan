@@ -1,0 +1,22 @@
+doctype html
+html
+    head
+        script(src='https://cdn.jsdelivr.net/npm/luxon@1.25.0/build/global/luxon.min.js')
+        script(src='https://cdn.jsdelivr.net/npm/chart.js@2.9.3')
+        //script(src='https://cdn.jsdelivr.net/npm/luxon@1.22.1')
+        script(src='https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@0.2.1')
+
+    body
+
+        script(src='/js/script.js')
+
+    canvas#chart1
+
+        script.
+            var bdata = !{JSON.stringify(bayoudata)};
+            var mykey = !{JSON.stringify(graphkey)};
+            console.log(mykey);
+            //console.log(!{graphkey})
+            //var graphingkey = String(#graphkey});
+            makeChart("chart1",bdata,mykey);
+            //makeChart("temp",bdata,"tempc");

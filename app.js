@@ -11,8 +11,9 @@ var networkUtil = require('./utils/networkUtil');
 var favicon = require('serve-favicon');
 var router = express.Router();
 
-
+var graphRouter = require('./routes/graph');
 var indexRouter = require('./routes/index');
+var mapRouter = require('./routes/map');
 
 var app = express()
 var port = process.env['PORT']
@@ -29,7 +30,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 // Loade routes
+app.use('/graph', graphRouter);
+app.use('/map',mapRouter);
 app.use('/', indexRouter);
+
 
 app.listen(port, () => {
     var ip = networkUtil.getIp();

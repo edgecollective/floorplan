@@ -1,10 +1,5 @@
 
-console.log('you are great');
-
-function letMeCallYou()
-{
-    alert("Bazinga!!!  you called letMeCallYou")
-}
+const probe = require('probe-image-size');
 
 function makeChart(docid,bdata,param_key)
 {
@@ -24,6 +19,7 @@ function makeChart(docid,bdata,param_key)
         data: {
         datasets: [{
         label: param_key,
+        fill: false,
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
         data: param_vs_time
